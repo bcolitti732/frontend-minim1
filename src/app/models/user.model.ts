@@ -6,11 +6,12 @@ export interface User {
   phone: string;
   available: boolean;
   packets: string[];
+  ratings: string[];
   seleccionado?: boolean;
-  }
-export class User implements User {
+}
 
-    constructor() {
-      this.seleccionado = false;
-    }
+export class User implements User {
+  constructor() {
+    this.seleccionado = false;
+  }
 }

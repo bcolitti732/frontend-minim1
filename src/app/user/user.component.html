@@ -18,6 +18,10 @@
             <!-- Botón para ver paquetes -->
             <button class="view-packages-button" (click)="verPaquetes(usuario)">Ver Paquetes</button>
           </td>
+          <td>
+            <!-- Botón para ver valoraciones -->
+            <button class="view-ratings-button" (click)="verRatings(usuario)">Ver Valoraciones</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -34,6 +38,13 @@
   [paquetes]="paquetesSeleccionados"
   (close)="cerrarModal()">
 </app-user-packages>
+
+<!-- Modal para mostrar valoraciones -->
+<app-user-ratings
+  *ngIf="mostrarModalRatings"
+  [ratings]="ratingsSeleccionados"
+  (close)="cerrarModalRatings()">
+</app-user-ratings>
 
 <mat-paginator
   [length]="totalItems"

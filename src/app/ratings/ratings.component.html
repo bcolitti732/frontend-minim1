@@ -1,0 +1,57 @@
+<!-- Lista de valoraciones paginadas -->
+<div>
+    <div *ngIf="displayedRatings.length > 0; else noRatings">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let rating of displayedRatings; trackBy: trackByRatingId">
+            <td class="checkbox-cell">
+              <input type="checkbox" [checked]="rating.seleccionado" (change)="toggleSeleccion(rating)" />
+            </td>
+            <td class="rating-info">
+              <p><strong>Usuario ID:</strong> {{ rating.user }}</p>
+              <p><strong>Puntuación:</strong> {{ rating.score }}</p>
+              <p><strong>Comentario:</strong> {{ rating.comment || 'Sin comentario' }}</p>
+              <p><strong>Fecha:</strong> {{ rating.createdAt | date: 'short' }}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Mensaje si no hay valoraciones -->
+  <ng-template #noRatings>
+    <div>No hay valoraciones disponibles</div>
+  </ng-template>
+  
+  <!-- Botón para asignar valoraciones -->
+  <div>
+    <a class="button assign-button" (click)="confirmarAsignacion()">Asignar Valoraciones</a>
+  </div>
+  
+  <!-- Modal para asignar valoraciones -->
+  <div class="modal-overlay" *ngIf="mostrarModal">
+    <div class="modal-content">
+      <h2>Indique el nombre del usuario a quien quiere asignar estas valoraciones</h2>
+      <div>
+        <input [(ngModel)]="searchTerm" placeholder="Nombre de usuario..." />
+        <button class="search-button" (click)="search()">Buscar</button>
+      </div>
+      <div *ngIf="usuariosEncontrados.length > 0">
+        <ul>
+          <li *ngFor="let usuario of usuariosEncontrados" (click)="asignarValoraciones(usuario)">
+            {{ usuario.name }} ({{ usuario.email }})
+          </li>
+        </ul>
+      </div>
+      <button class="close-modal-button" (click)="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+  
+  <!-- Paginador de Angular Material -->
+  <mat-paginator
+    [length]="totalItems"
+    [pageSize]="itemsPerPage"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)">
+  </mat-paginator>

@@ -3,6 +3,7 @@
   <div class="tabs">
     <button (click)="setActiveTab('user')" [class.active]="activeTab === 'user'">Registrar Usuario</button>
     <button (click)="setActiveTab('packet')" [class.active]="activeTab === 'packet'">Registrar Paquete</button>
+    <button (click)="setActiveTab('rating')" [class.active]="activeTab === 'rating'">Registrar Valoración</button>
   </div>
 
   <!-- Formulario de Registro de Usuario -->
@@ -22,6 +23,9 @@
     <label for="packets">Packets (JSON):</label>
     <textarea id="packets" formControlName="packets" required></textarea>
 
+    <label for="ratings">Ratings (JSON):</label>
+    <textarea id="ratings" formControlName="ratings" required></textarea>
+
     <button type="submit" class="button add-button">Registrar Usuario</button>
   </form>
 
@@ -37,5 +41,19 @@
     <input type="text" id="packet-status" formControlName="status" required>
 
     <button type="submit" class="button add-button">Registrar Paquete</button>
+  </form>
+
+  <!-- Formulario de Registro de Valoración -->
+  <form *ngIf="activeTab === 'rating'" [formGroup]="ratingForm" (ngSubmit)="registerRating()">
+    <label for="user">ID del Usuario:</label>
+    <input type="text" id="user" formControlName="user" required>
+
+    <label for="score">Puntuación:</label>
+    <input type="number" id="score" formControlName="score" min="1" max="5" required>
+
+    <label for="comment">Comentario:</label>
+    <textarea id="comment" formControlName="comment"></textarea>
+
+    <button type="submit" class="button add-button">Registrar Valoración</button>
   </form>
 </div>

@@ -198,3 +198,18 @@ div > div:empty {
   outline: none;
   box-shadow: 0 0 5px rgba(133, 89, 1, 0.5);
 }
+
+/* Estilo específico para el botón "Ver Valoraciones" */
+.view-ratings-button {
+  background-color: #4caf50; /* Verde */
+  color: white;
+}
+
+.view-ratings-button:hover {
+  background-color: #45a049; /* Verde más oscuro al pasar el mouse */
+}
+
+.view-ratings-button:active {
+  background-color: #3e8e41; /* Verde aún más oscuro al hacer clic */
+  transform: scale(0.98); /* Efecto de clic */
+}

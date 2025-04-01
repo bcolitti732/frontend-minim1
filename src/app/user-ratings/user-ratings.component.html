@@ -1,0 +1,13 @@
+<div class="modal-overlay">
+    <div class="modal-content">
+      <h2>Valoraciones del Usuario</h2>
+      <ul>
+        <li *ngFor="let rating of ratings">
+          <strong>Puntuación:</strong> {{ rating.score }}<br>
+          <strong>Comentario:</strong> {{ rating.comment || 'Sin comentario' }}<br>
+          <strong>Fecha:</strong> {{ rating.createdAt | date: 'short' }}
+        </li>
+      </ul>
+      <button class="close-button" (click)="cerrar()">Cerrar</button>
+    </div>
+  </div>
