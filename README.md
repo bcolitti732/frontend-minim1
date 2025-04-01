@@ -1,3 +1,8 @@
+# Comentaris minim
+M'ha sigut impossible acabar a temps. No esta fet delete update. Per assignar a un usuari un rating, cal fer-ho desde swagger, la funció de frontend no funciona, pero si que es pot veure des dels usuaris del boto "ver valoraciones" si s'han assignat des de swagger. També es pot crear una valoració des de frontend. Tampoc he implementat el buscador a frontend. També es interessant crear primer un paquet i rating per després asignar l'objectid a l'usuari al crear-ho des de frontend
+
+
+
 # AngularApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
